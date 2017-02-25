@@ -20,6 +20,7 @@ class Rewards extends CORE_Controller
     }
 
     public function index() {
+        echo "ddd";
 
 
     }
@@ -46,7 +47,7 @@ class Rewards extends CORE_Controller
                     $current_month=date('m');
 
                     echo $current_date;
-                    echo "PAUL TEST";
+
 
                     $celebrants=$m_members->get_list(
                         " cus_bdate LIKE '%-".$current_month."-".$current_date."' AND customer_id NOT IN (SELECT customer_id FROM birthday_rewards WHERE is_active=1 AND is_approved=1 AND bday_year=".$current_year.")"
