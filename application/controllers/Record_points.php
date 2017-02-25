@@ -14,7 +14,8 @@ class Record_points extends CORE_Controller
                     'Acquired_items_model',
                     'Redeem_model',
                     'Redeem_items_model',
-                    'Customer_model'
+                    'Customer_model',
+                    'Birthday_reward'
                 )
             );
 
@@ -31,9 +32,11 @@ class Record_points extends CORE_Controller
         $data['title']='Reward Points';
 
 
-        $data['menu_items']=$this->Item_model->get_list('items.item_id<=10');
+        $data['menu_items']=$this->Item_model->get_list('items.is_deleted=0 AND items.is_active=1',null,null,null,null,TRUE,10);
         $data['items']=$this->Item_model->get_list(
-                null, //no id filter
+
+                   null
+                , //no id filter
                 array(
                            'items.item_id',
                            'items.item_code',
@@ -97,7 +100,10 @@ class Record_points extends CORE_Controller
                     $m_items=$this->Item_model;
                     
                     $response['data']=$m_items->get_list(
-                        null,
+                        array(
+                            'items.is_deleted'=>0,
+                            'items.is_active'=>1
+                        ),
                         array(
                             'items.*'
                         ),
@@ -190,7 +196,7 @@ class Record_points extends CORE_Controller
                             'acquire_points_info.customer_id'=>$customer_id
                         ),
                         array(
-                            'SUM(acquire_points_info.total_points_acquired)as total_points_acquired'
+                            'IFNULL(SUM(acquire_points_info.total_points_acquired),0)as total_points_acquired'
                         )
                     );
 
@@ -203,7 +209,17 @@ class Record_points extends CORE_Controller
                             'redeem_info.customer_id'=>$customer_id
                         ),
                         array(
-                            'SUM(redeem_info.total_points_redeem)as total_points_redeem'
+                            'IFNULL(SUM(redeem_info.total_points_redeem),0)as total_points_redeem'
+                        )
+                    );
+
+                    $m_rewards=$this->Birthday_reward;
+                    $reward_points=$m_rewards->get_list(
+                        array(
+                            'birthday_rewards.customer_id'=>$customer_id
+                        ),
+                        array(
+                            'IFNULL(SUM(birthday_rewards.reward_points),0)as total_reward_points'
                         )
                     );
 
@@ -211,9 +227,11 @@ class Record_points extends CORE_Controller
 
                     $total_points_acquired=$acquired_points[0]->total_points_acquired;
 
+                    $total_rewards_point=$reward_points[0]->total_reward_points;
+
                     //update points of current member
                     $m_customers->total_earn_pts=$total_points_acquired;
-                    $m_customers->current_pts=$total_points_acquired-$total_points_redeem;
+                    $m_customers->current_pts=$total_points_acquired-$total_points_redeem+$total_rewards_point;
                     $m_customers->modify($customer_id);
 
 

@@ -63,7 +63,7 @@
                         <li class="<?php echo (in_array('4-4',$this->session->user_rights)?'':'hidden'); ?>"><a href="Profile" title="Profile"><span>User Profile</span></a></li>
                         <li class="<?php echo (in_array('4-5',$this->session->user_rights)?'':'hidden'); ?>" ><a href="Membership_types" title="Setup Membership Types"><span>Setup Membership Types</span></a></li>
                         <li class="<?php echo (in_array('4-6',$this->session->user_rights)?'':'hidden'); ?>" ><a href="System_setup" title="Advertisement Setup"><span>Advertisement Setup</span></a></li>
-                        <li class="<?php echo (in_array('4-7',$this->session->user_rights)?'':'hidden'); ?>" ><a href="#" id="link_setup_reward" title="Setup Reward"><span>Setup Reward</span></a></li>
+                        <li class="<?php echo (in_array('4-7',$this->session->user_rights)?'':'hidden'); ?>" ><a href="#" id="link_setup_reward" title="Setup Reward"><span>Reward Preference</span></a></li>
 
                     </ul>
 

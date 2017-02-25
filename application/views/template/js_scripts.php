@@ -1,4 +1,8 @@
 
+
+
+
+
 <div class="modal fade" id="modal_setup_reward" tabindex="-1" role="dialog" aria-labelledby="modal_members_infoLabel" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -15,15 +19,27 @@
                        <div class="row">
                            <div class="col-lg-8">
                                Send Reward Points (Member Birthday) :
-                               <select name="auto_points" class="form-control">
-                                   <option value="1">Enable</option>
-                                   <option value="0">Disable</option>
-                               </select>
+                               <div class="div_reward_preference_loader" style="display: none;">
+                                   <img src="assets/images/loader/facebook.gif" />
+                               </div>
+
+                               <div class="div_reward_preference">
+
+                                   <select name="auto_points" class="form-control">
+                                       <option value="1">Enable</option>
+                                       <option value="0">Disable</option>
+                                   </select>
+                               </div>
                            </div>
 
                            <div class="col-lg-4">
                                Points :
-                               <input text="text" name="send_points" class="form-control" />
+                               <div class="div_reward_preference_loader" style="display: none;">
+                                   <img src="assets/images/loader/facebook.gif" />
+                               </div>
+                               <div class="div_reward_preference">
+                                    <input text="text" name="send_points" class="form-control" />
+                               </div>
                            </div>
                        </div>
 
@@ -156,6 +172,27 @@
     $(document).ready(function(){
 
         $('#link_setup_reward').click(function(e){
+            $.ajax({
+                "dataType":"json",
+                "type":"GET",
+                "url":"System_setup/transaction/get-reward-preference",
+                "beforeSend": function(){
+                    $('.div_reward_preference_loader').show();
+                    $('.div_reward_preference').hide();
+                }
+            }).done(function(response){
+                if(response.length>0){
+                    $('select[name="auto_points"]').val(response[0].is_reward_enabled);
+                    $('input[name="send_points"]').val(accounting.formatNumber(response[0].reward_points,0));
+                }
+
+
+            }).always(function(){
+                $('.div_reward_preference_loader').hide();
+                $('.div_reward_preference').show();
+            });
+
+
             $('#modal_setup_reward').modal('show');
 
         });

@@ -118,7 +118,7 @@ class CORE_model extends CI_Model
         $this->db->order_by($order_by==null?$this->table.'.'.$this->pk_id.' ASC':(is_array($order_by)?join(',',$order_by):$order_by));
 
         //limit
-        if($limit!=null){ $this->db->limit(10); }
+        if($limit!=null){ $this->db->limit($limit); }
 
         $query = $this->db->get();
         return $query->result();

@@ -47,12 +47,19 @@ class System_setup extends CORE_Controller
                 echo json_encode($response);
                 break;
 
+
+            case 'get-reward-preference':
+                $m_preference=$this->Reward_preference_model;
+                echo json_encode($m_preference->get_list(
+                   null
+                ));
+                break;
             case 'reward-preference':
                 $m_preference=$this->Reward_preference_model;
                 $m_preference->delete('preference_id>0');
 
                 $m_preference->is_reward_enabled=$this->input->post('auto_points',TRUE);
-                $m_preference->reward_points=$this->input->post('send_points',TRUE);
+                $m_preference->reward_points=$this->get_numeric_value($this->input->post('send_points',TRUE));
                 $m_preference->save();
 
 
