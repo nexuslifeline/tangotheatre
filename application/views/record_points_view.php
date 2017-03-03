@@ -644,6 +644,16 @@
                                 var data_row=response.row_added[0];
                                 oTableHistory.row.add(data_row).draw();
 
+
+                                $('#modal_card_activation').modal('hide');//hide activation modal
+                                $('#txt_card_code').val(""); //clear card code field
+                                $('#camera_card_code').val("")
+                                $('#modal_camera_scanner').modal('hide');//hide activation modal
+
+                                $('#modal_members_info').modal('hide');//hide members modal
+
+
+
                                 if(dualDisplayHandle!=null&&dualDisplayHandle!=undefined){
 
                                     dualDisplayHandle.$('#transaction_info').show();
@@ -654,15 +664,7 @@
                                     dualDisplayHandle.$('#header_points').html(data_row.total_points_acquired+" Points");
                                 }
 
-
-
-                                $('#txt_card_code').val(""); //clear card code field
-                                $('#camera_card_code').val("")
-                                $('#modal_camera_scanner').modal('hide');//hide activation modal
-                                $('#modal_card_activation').modal('hide');//hide activation modal
-                                $('#modal_members_info').modal('hide');//hide members modal
                                 clearFields(f); //clear all form fields
-
 
                             }else{
                                 $('#txt_card_code').val("");
@@ -790,6 +792,15 @@
                             var data_row=response.row_added[0];
                             oTableHistory.row.add(data_row).draw();
 
+
+
+
+                            $('#txt_card_code').val(""); //clear card code field
+                            $('#camera_card_code').val("")
+                            $('#modal_camera_scanner').modal('hide');//hide activation modal
+                            $('#modal_card_activation').modal('hide');//hide activation modal
+                            $('#modal_members_info').modal('hide');//hide members modal
+
                             if(dualDisplayHandle!=null&&dualDisplayHandle!=undefined){
 
                                 dualDisplayHandle.$('#transaction_info').show();
@@ -799,14 +810,7 @@
                                 dualDisplayHandle.$('#header_statement').html("You have earned ");
                                 dualDisplayHandle.$('#header_points').html(data_row.total_points_acquired+" Points");
                             }
-
-
                             clearFields(f); //clear all form fields
-                            $('#txt_card_code').val(""); //clear card code field
-                            $('#camera_card_code').val("")
-                            $('#modal_camera_scanner').modal('hide');//hide activation modal
-                            $('#modal_card_activation').modal('hide');//hide activation modal
-                            $('#modal_members_info').modal('hide');//hide members modal
 
 
                         }else{

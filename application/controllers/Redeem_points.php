@@ -97,7 +97,7 @@ class Redeem_points extends CORE_Controller
                     $m_items=$this->Item_model;
                     
                     $response['data']=$m_items->get_list(
-                        null,
+                        'items.is_deleted=0 AND items.is_active=1',
                         array(
                             'items.*'
                         ),
@@ -124,7 +124,7 @@ class Redeem_points extends CORE_Controller
 
                     $card_code=$this->input->post('card_code',TRUE);
                     $customers=$m_customers->get_list(
-                        "card_id=(SELECT card_id FROM cards WHERE card_code='".$card_code."')",
+                        "is_active=1 AND is_deleted=0 AND card_id=(SELECT card_id FROM cards WHERE card_code='".$card_code."')",
                         array(
                             'customers.customer_id',
                             'customers.current_pts'

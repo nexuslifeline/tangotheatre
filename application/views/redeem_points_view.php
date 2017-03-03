@@ -801,6 +801,16 @@ $(document).ready(function(){
                             var data_row=response.row_added[0];
                             oTableHistory.row.add(data_row).draw();
 
+
+
+
+
+                            $('#txt_card_code').val(""); //clear card code field
+                            $('#camera_card_code').val("")
+                            $('#modal_camera_scanner').modal('hide');//hide activation modal
+                            $('#modal_card_activation').modal('hide');//hide activation modal
+                            $('#modal_members_info').modal('hide');//hide members modal
+
                             if(dualDisplayHandle!=null&&dualDisplayHandle!=undefined){
 
                                 dualDisplayHandle.$('#transaction_info').show();
@@ -811,13 +821,7 @@ $(document).ready(function(){
                                 dualDisplayHandle.$('#header_points').html(data_row.total_points_redeem+" Points");
                             }
 
-
                             clearFields(f); //clear all form fields
-                            $('#txt_card_code').val(""); //clear card code field
-                            $('#camera_card_code').val("")
-                            $('#modal_camera_scanner').modal('hide');//hide activation modal
-                            $('#modal_card_activation').modal('hide');//hide activation modal
-                            $('#modal_members_info').modal('hide');//hide members modal
 
 
                         }else{
@@ -950,6 +954,17 @@ $(document).ready(function(){
                         var data_row=response.row_added[0];
                         oTableHistory.row.add(data_row).draw();
 
+
+
+
+
+                        $('#txt_card_code').val(""); //clear card code field
+                        $('#camera_card_code').val("")
+                        $('#modal_camera_scanner').modal('hide');//hide activation modal
+                        $('#modal_card_activation').modal('hide');//hide activation modal
+                        $('#modal_members_info').modal('hide');//hide members modal
+
+
                         if(dualDisplayHandle!=null&&dualDisplayHandle!=undefined){
 
                             dualDisplayHandle.$('#transaction_info').show();
@@ -960,14 +975,7 @@ $(document).ready(function(){
                             dualDisplayHandle.$('#header_points').html(data_row.total_points_redeem+" Points");
                         }
 
-
                         clearFields(f); //clear all form fields
-                        $('#txt_card_code').val(""); //clear card code field
-                        $('#camera_card_code').val("")
-                        $('#modal_camera_scanner').modal('hide');//hide activation modal
-                        $('#modal_card_activation').modal('hide');//hide activation modal
-                        $('#modal_members_info').modal('hide');//hide members modal
-
 
                     }else{
                         $('#txt_card_code').val("");

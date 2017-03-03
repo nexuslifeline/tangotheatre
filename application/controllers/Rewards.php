@@ -20,7 +20,14 @@ class Rewards extends CORE_Controller
     }
 
     public function index() {
-        echo "ddd";
+
+        //date_default_timezone_set('Pacific/Guam');
+        date_default_timezone_set('Asia/Manila');
+        echo date('m/d/Y h:i')." - Philippines<br />";
+
+
+        date_default_timezone_set('Pacific/Guam');
+        echo date('m/d/Y h:i')." - Guam";
 
 
     }
@@ -35,6 +42,12 @@ class Rewards extends CORE_Controller
                     array('is_reward_enabled'=>1)
                 );
 
+                echo "<b>In reference of Current Server Time : </b><br /><br />";
+                date_default_timezone_set('Asia/Manila');
+                echo date('m/d/Y h:i')." - Philippines<br />";
+                date_default_timezone_set('Pacific/Guam');
+                echo date('m/d/Y h:i')." - Guam<br />";
+
                 //first check if auto reward is enabled
                 if(count($reward_info)>0){ //if true, auto reward is enabled
                     $points=$reward_info[0]->reward_points;
@@ -46,7 +59,7 @@ class Rewards extends CORE_Controller
                     $current_date=date('d');
                     $current_month=date('m');
 
-                    echo $current_date;
+
 
 
                     $celebrants=$m_members->get_list(
@@ -56,13 +69,13 @@ class Rewards extends CORE_Controller
                     //loop to each celebrants
                     //MUST BE OPTIMIZE!!!
                     foreach($celebrants as $celebrant){
+
                         $m_bday_rewards->customer_id=$celebrant->customer_id;
                         $m_bday_rewards->reward_points=$points;
                         $m_bday_rewards->bday_year=$current_year;
                         $m_bday_rewards->bday_day=$current_date;
                         $m_bday_rewards->bday_month=$current_month;
                         $m_bday_rewards->save();
-
 
                         //email each celebrant
                         $m_members->set('total_earn_pts','total_earn_pts+'.$points);

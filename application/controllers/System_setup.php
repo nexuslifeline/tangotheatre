@@ -60,6 +60,7 @@ class System_setup extends CORE_Controller
 
                 $m_preference->is_reward_enabled=$this->input->post('auto_points',TRUE);
                 $m_preference->reward_points=$this->get_numeric_value($this->input->post('send_points',TRUE));
+                $m_preference->greetings=$this->input->post('greetings',TRUE);
                 $m_preference->save();
 
 

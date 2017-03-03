@@ -43,6 +43,20 @@
                            </div>
                        </div>
 
+                        <br />
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                Greetings :<br />
+                                <div class="div_reward_preference_loader" style="display: none;">
+                                    <img src="assets/images/loader/facebook.gif" />
+                                </div>
+                                <div class="div_reward_preference">
+                                    <textarea name="greetings" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -184,6 +198,7 @@
                 if(response.length>0){
                     $('select[name="auto_points"]').val(response[0].is_reward_enabled);
                     $('input[name="send_points"]').val(accounting.formatNumber(response[0].reward_points,0));
+                    $('textarea[name="greetings"]').val(response[0].greetings);
                 }
 
 
