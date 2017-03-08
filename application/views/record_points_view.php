@@ -408,7 +408,7 @@
                                 <th>Customer Name </th>
                                 <th>Total Pts.</th>
                                 <th>Process By</th>
-                                <th>Transaction Date</th>
+                               <th>Tnx Date</th>
 
 
                             </tr>

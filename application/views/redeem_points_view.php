@@ -567,6 +567,7 @@
                                 <th>Customer Name </th>
                                 <th>Total Pts.</th>
                                 <th>Process By</th>
+                                 <th>Tnx Date</th>
 
                             </tr>
                             </thead>
@@ -675,7 +676,8 @@ $(document).ready(function(){
                 { targets:[2],data: "card_code" },
                 { targets:[3],data: "customer_name" },
                 { targets:[4],data: "total_points_redeem" },
-                { targets:[5],data: "user_fullname" }
+                { targets:[5],data: "user_fullname" },
+                 { targets:[6],data: "date_created" }
             ]
         });
 
