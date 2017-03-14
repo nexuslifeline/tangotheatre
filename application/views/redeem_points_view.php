@@ -21,6 +21,16 @@
         }
 
 
+        .login-background {
+            background: #d5f2fe; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(top, #feffff, #00bca4); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(top, #feffff, #00bca4); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(top, #feffff, #00bca4); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(top, #feffff, #00bca4); /* Standard syntax */
+        }
+
+
+
 
 
     </style>
@@ -47,7 +57,7 @@
 </head>
 
 
-<body>
+<body class="login-background">
 <div id="sb-site">
 
 <?php echo $loading; ?>
@@ -62,7 +72,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="content-box pad20A border-black">
+        <div class="content-box pad20A " style="border: 3px solid #00bca4;background-color: #ebfefc">
             <div class="ribbon">
                 <div class="bg-primary">Menus</div>
             </div>
@@ -83,11 +93,11 @@
 
 <div class="col-lg-9">
 
-    <div class="panel border-black">
+    <div class="panel" style="border:4px solid #03aa98;">
 
         <div class="panel-body" style="min-height: 640px;">
             <div class="row">
-                <div class="input-group" style="border:1px solid black">
+                <div class="input-group" style="border:2px solid #06ac9b;border-radius: 6px;">
                     <input type="text" class="form-control">
                     <div class="input-group-btn">
                         <button id="btn_browse_item" type="button" class="btn btn-default" tabindex="-1">
@@ -102,16 +112,16 @@
             <div class="row">
                 <div class="panel border-black">
 
-                    <div class="panel-heading" style="border-bottom: 3px solid black;">
+                    <div class="panel-heading" style="border-bottom: 3px solid #03aa98;background-color: #00bca4;">
                         <h4 class="panel-title">
 
-                                        <span style="font-family: tahoma;font-size: small;" class="font-black">
+                                        <span style="font-family: tahoma;font-size: small;" class="font-white">
                                             <b><i class="glyph-icon icon-star"></i> Redeem Points</b>
                                         </span>
 
 
-                                        <span class="pull-right" style="font-family: tahoma;font-size: small;">
-                                            <i class="glyph-icon icon-area-chart"></i> Total Redeem Points : <b><span id="span_total_points" class="font-orange">0.00</span></b>
+                                        <span class="pull-right font-white" style="font-family: tahoma;font-size: small;">
+                                            <i class="glyph-icon icon-area-chart"></i> Total Redeem Points : <b><span id="span_total_points" class="font-white">0.00</span></b>
                                         </span>
 
                         </h4>
@@ -123,7 +133,7 @@
 
                             <form id="frm_items">
                                 <div class="table-responsive">
-                                    <table id="tbl_items" style="overflow: scroll;border:1px solid black;" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-font:tahoma;">
+                                    <table id="tbl_items" style="overflow: scroll;" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-font:tahoma;">
                                         <thead>
                                         <tr>
 
@@ -185,203 +195,46 @@
 
 <div class="col-lg-3">
 
-    <div class="panel border-black">
+    <div class="panel" style="border:4px solid #03aa98;">
 
-        <div class="panel-heading" style="border-bottom: 3px solid black;">
-            <h4 class="panel-title border-black">
-                             <span style="font-family: tahoma;font-size: small;" class="font-black">
+        <div class="panel-heading" style="border-bottom: 4px solid #00bca4;background-color:#00bca4; ">
+            <h4 class="panel-title">
+                             <span style="font-family: tahoma;font-size: small;" class="font-white">
                                             <b><i class="glyph-icon icon-cubes"></i> Ticket Packages</b>
                              </span>
             </h4>
         </div>
 
 
-        <div class="panel-body" style="min-height: 600px;">
+        <div class="panel-body" style="min-height: 600px;background-color: #ebfefc;">
+
+            <?php for($i=0;$i<=count($menu_items)-1;$i++){ ?>
+                <div class="col-md-6" style="margin-bottom: 10px;">
+                    <a href="#" data-item-id="<?php echo $menu_items[$i]->item_id; ?>" data-item-name="<?php echo $menu_items[$i]->item_name; ?>" data-item-points="<?php echo $menu_items[$i]->acquired_points_reward; ?>" title="Example tile shortcut" class="tile-box tile-box-shortcut btn-primary tile_box_menu">
+
+                        <div class="tile-header">
+                            <b><?php echo $menu_items[$i]->item_name; ?></b>
+                        </div>
+
+                        <div class="tile-content-wrapper">
+                            <i class="glyph-icon icon-file"></i>
+                        </div>
+                    </a>
+                </div>
+
+
+            <?php } ?>
+
+
 
             <div class="row">
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[0]->item_id; ?>" data-item-name="<?php echo $menu_items[0]->item_name; ?>" data-item-points="<?php echo $menu_items[0]->required_points_redeem; ?>" title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[0]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[1]->item_id; ?>" data-item-name="<?php echo $menu_items[1]->item_name; ?>" data-item-points="<?php echo $menu_items[1]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[1]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
+                <button id="btn_continue_card_activation" type="button" class="btn btn-primary col-lg-12" style="height: 40px;"><i class="glyph-icon icon-check-circle-o"></i> <b>QR Code Scan or Enter Card #</b></button>
             </div>
 
             <br />
-
-
             <div class="row">
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[2]->item_id; ?>" data-item-name="<?php echo $menu_items[2]->item_name; ?>" data-item-points="<?php echo $menu_items[2]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[2]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[3]->item_id; ?>" data-item-name="<?php echo $menu_items[3]->item_name; ?>" data-item-points="<?php echo $menu_items[3]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[3]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
+                <button id="btn_camera_scanner" type="button" class="btn btn-warning col-lg-12" style="height: 40px;"><i class="glyph-icon icon-check-circle-o"></i> <b>Scan using Camera >></b></button>
             </div>
-
-
-            <br />
-
-
-            <div class="row">
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[4]->item_id; ?>" data-item-name="<?php echo $menu_items[4]->item_name; ?>" data-item-points="<?php echo $menu_items[4]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[4]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[5]->item_id; ?>" data-item-name="<?php echo $menu_items[5]->item_name; ?>" data-item-points="<?php echo $menu_items[5]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[5]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-
-
-
-
-            <br />
-
-
-            <div class="row">
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[6]->item_id; ?>" data-item-name="<?php echo $menu_items[6]->item_name; ?>" data-item-points="<?php echo $menu_items[6]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[6]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[7]->item_id; ?>" data-item-name="<?php echo $menu_items[7]->item_name; ?>" data-item-points="<?php echo $menu_items[7]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[7]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-
-
-
-            <br />
-
-
-            <div class="row">
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[8]->item_id; ?>" data-item-name="<?php echo $menu_items[8]->item_name; ?>" data-item-points="<?php echo $menu_items[8]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[8]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="col-md-6">
-                    <a href="#" data-item-id="<?php echo $menu_items[9]->item_id; ?>" data-item-name="<?php echo $menu_items[9]->item_name; ?>" data-item-points="<?php echo $menu_items[9]->required_points_redeem; ?>"  title="Example tile shortcut" class="tile-box tile-box-shortcut btn-white border-black font-black tile_box_menu">
-
-                        <div class="tile-header">
-                            <b><?php echo $menu_items[9]->item_name; ?></b>
-                        </div>
-
-                        <div class="tile-content-wrapper">
-                            <i class="glyph-icon icon-file"></i>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-            <br />
-
-            <div class="row">
-                <button id="btn_continue_card_activation" type="button" class="btn btn-primary col-lg-12" style="height: 40px;"><i class="glyph-icon icon-check-circle-o"></i> <b>Scan or Enter Card Number >></b></button>
-
-            </div>
-
-
-
-
-                    <br />
-                        <div class="row">
-                              <button id="btn_camera_scanner" type="button" class="btn btn-warning col-lg-12" style="height: 40px;"><i class="glyph-icon icon-check-circle-o"></i> <b>Scan using Camera >></b></button>
-                        </div>
-
 
         </div>
     </div>

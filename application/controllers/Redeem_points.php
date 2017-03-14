@@ -31,7 +31,7 @@ class Redeem_points extends CORE_Controller
         $data['loading']=$this->load->view('template/loading_view','',TRUE);
         $data['title']='Redeem Points';
 
-        $data['menu_items']=$this->Item_model->get_list('items.item_id<=10');
+        $data['menu_items']=$this->Item_model->get_list('items.is_deleted=0 AND items.is_active=1',null,null,null,null,TRUE,10);
         $data['items']=$this->Item_model->get_list(
                 null, //no id filter
                 array(
