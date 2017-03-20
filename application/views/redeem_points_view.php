@@ -96,7 +96,7 @@
     <div class="panel" style="border:4px solid #03aa98;">
 
         <div class="panel-body" style="min-height: 640px;">
-            <div class="row">
+            <!--<div class="row" >
                 <div class="input-group" style="border:2px solid #06ac9b;border-radius: 6px;">
                     <input type="text" class="form-control">
                     <div class="input-group-btn">
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </div>
-
+            -->
             <br />
 
             <div class="row">
@@ -420,6 +420,7 @@
                                 <th>Customer Name </th>
                                 <th>Total Pts.</th>
                                 <th>Process By</th>
+                                <th>Tnx Date</th>
 
                             </tr>
                             </thead>
@@ -440,6 +441,50 @@
         </div>
     </div>
 </div><!--modal item list-->
+
+
+
+<div class="modal fade" id="modal_member_enlistment" style="margin-top: 10%;" tabindex="-1" role="dialog" aria-labelledby="modal_members_infoLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header bg-gradient-9">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><b>&times;</b></button>
+                <h4 class="modal-title" style="color: white;font-family: tahoma;"><b><i class="glyph-icon icon-bars"></i> Member Details</b></h4>
+
+            </div>
+            <div class="modal-body" style="padding: 1%;font-family: tahoma;">
+                <div class="panel">
+                    <div class="panel-body">
+
+                        <table id="tbl_member_enlistment" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+
+                                <th>Card Code #</th>
+                                <th>Customer Name </th>
+                                <th>Current Pts.</th>
+                                <th>Total Pts.</th>
+                               
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+
+            </div>
+        </div>
+    </div>
+</div><!--modal member list-->
 
 
 
@@ -528,9 +573,26 @@ $(document).ready(function(){
                 { targets:[2],data: "card_code" },
                 { targets:[3],data: "customer_name" },
                 { targets:[4],data: "total_points_redeem" },
-                { targets:[5],data: "user_fullname" }
+                { targets:[5],data: "user_fullname" }, 
+                { targets:[6],data: "date_created" }
             ]
         });
+
+
+
+                    oTableMember_enlistment=$('#tbl_member_enlistment').DataTable({
+                        "dom": '<"toolbar">frtip',
+                        "bLengthChange":false,
+                        "iDisplayLength" : 5,
+                        "ajax" : "Memberships/transaction/list",
+                        "columns": [
+
+                            { targets:[1],data: "card_code" },
+                            { targets:[2],data: "member_name" },
+                            { targets:[3],data: "current_pts" },
+                            { targets:[4],data: "total_earn_pts" }
+                        ]
+                    });
 
 
     }();
@@ -903,6 +965,9 @@ $(document).ready(function(){
 
 
 
+$('#btn_search_member').click(function(){
+    $('#modal_member_enlistment').modal('show');  
+});
 
 
 
