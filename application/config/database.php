@@ -1,3 +1,8 @@
+
+Currently editing:  
+/home3/jojojdev/public_html/subdomain/tango/application/config/database.php
+ Encoding:    Reopen  Switch to Code Editor     Close  Save
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -74,10 +79,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 		'dsn'	=> '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
-		'database' => 'lpms',
+		'hostname' => '198.38.82.92',
+		'username' => 'jojojdev_user',
+		'password' => 'Admin',
+		'database' => 'jojojdev_lpms',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => FALSE,
@@ -93,3 +98,4 @@ $db['default'] = array(
 		'failover' => array(),
 		'save_queries' => TRUE
 );
+
