@@ -1,3 +1,8 @@
+
+Currently editing:  
+/home3/jojojdev/public_html/subdomain/tango/application/config/database.php
+ Encoding:    Reopen  Switch to Code Editor     Close  Save
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
